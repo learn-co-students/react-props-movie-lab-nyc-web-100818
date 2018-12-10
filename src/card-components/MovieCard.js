@@ -33,11 +33,34 @@ export default class MovieCard extends Component {
     return (
       <div className="movie-card">
         {/* which component should receive which props? */}
-        <CardFront />
-        <CardBack />
+        <CardFront
+          poster = { posterMap[this.props.poster] }
+        />
+
+        <CardBack
+          title = { this.props.title }
+          IMDBRating = { this.props.IMDBRating }
+          genres = { this.props.genres }
+        />
       </div>
     )
   }
 }
 
+MovieCard.defaultProps = {
+  title: 'Unknown',
+  IMDBRating: null,
+  genres: ["No Genre(s) Found"],
+  poster: 'default'
+}
+
 // Don't forget your default props!
+
+// MovieCard
+//
+// defaultProps should be assigned in MovieCard for all four of the props:
+// title receives an 'Unknown' string
+// IMDBRating simply gets assigned to null
+// genres should receive a value that will work with our CardBack component's rendering method for genres. The screen should read: 'No Genre(s) Found'
+// poster should get the string default
+// pass the correct props to the correct back/front components (Note: the posterMap already takes care of converting a string into the appropriate poster asset)
