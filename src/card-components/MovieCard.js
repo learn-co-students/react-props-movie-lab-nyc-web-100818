@@ -1,3 +1,4 @@
+//child of MovieShowcase and parent to cardback and cardfront
 import defaultPoster from '../assets/poster-imgs/default.png'
 import cmi from '../assets/poster-imgs/choux-and-maru-go-to-istanbul.png'
 import cmp1 from '../assets/poster-imgs/choux-and-maru-p1.png'
@@ -32,12 +33,21 @@ export default class MovieCard extends Component {
   render() {
     return (
       <div className="movie-card">
-        {/* which component should receive which props? */}
-        <CardFront />
-        <CardBack />
+        <CardFront poster={posterMap[this.props.poster]} />
+        <CardBack
+          title={this.props.title}
+					IMDBRating={this.props.IMDBRating}
+					genres={this.props.genres}
+          />
       </div>
     )
   }
 }
 
+MovieCard.defaultProps = {
+  title:'unknown',
+  IMDBRating: 'null',
+  genres: 'No Genre(s) Found',
+  poster: 'default'
+}
 // Don't forget your default props!
